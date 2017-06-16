@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Main Page</title>
+    <script th:src="@{/js/jquery-3.2.0.min.js}" type="text/javascript"></script>
+    <script th:src="@{/js/submitForm.js}" type="text/javascript"></script>
+</head>
+<body>
+<form id="mainForm" action="/submit" method="post">
+    <input type="text" name="name" placeholder="name"/>
+    <input type="number" name="age" placeholder="age"/>
+    <select name="address">
+        <option disabled="disabled" selected="selected">Choose Street</option>
+        <option th:each="address: ${addresses}" th:value="${address.getId()}" th:text="${address.getStreet()}"></option>
+    </select>
+    <input type="submit" value="Submit"/>
+</form>
+<div id="result">
+    <p></p>
+    <p id="userName"></p>
+    <p id="userAge"></p>
+    <p id="userStreet"></p>
+    <p id="responseStatus" style="color: red"></p>
+</div>
+</body>
+</html>
